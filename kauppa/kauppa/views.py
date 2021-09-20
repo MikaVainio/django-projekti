@@ -12,22 +12,6 @@ Osta täältä:<br>
 </html>
 """
 
-TUOTESIVU_HTML = """
-<html>
-<body>
-<h1>Kauppa</h1>
-<h2>Tuote {}</h2>
-<p>
-Nyt tarjouksessa. Osta heti!
-</p>
-<p>
-<a href="/">[etusivu]</a>
-</p>
-</body>
-</html>
-"""
-
-
 def etusivu(request):
     tuotelinkit = []
     for tuote in Tuote.objects.all():
@@ -42,4 +26,23 @@ def etusivu(request):
 
 
 def tuotesivu(request, tuote_id):
-    return HttpResponse(TUOTESIVU_HTML.format(tuote_id))
+    tuotteet = Tuote.objects.filter(id=tuote_id)
+    tuote = tuotteet.get()
+    return HttpResponse(TUOTESIVU_HTML.format(
+        nimi=tuote.nimi, hinta=tuote.hinta))
+
+TUOTESIVU_HTML = """
+<html>
+<body>
+<h1>Kauppa</h1>
+<h2>{nimi}</h2>
+<p>
+<b>{hinta} €</b>
+Nyt tarjouksessa. Osta heti!
+</p>
+<p>
+<a href="/">[etusivu]</a>
+</p>
+</body>
+</html>
+"""
