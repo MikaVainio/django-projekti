@@ -46,3 +46,37 @@ Nyt tarjouksessa. Osta heti!
 </body>
 </html>
 """
+
+
+def tietokantakyselyn_esimerkki():
+    # Kaikkiin tietokantariveihin pääsee
+    #  Luokka.objects.all() -kutsulla, joka palauttaa QuerySetin
+    kaikki_tuotteet = Tuote.objects.all()
+
+    # QuerySettiä voi suodattaa (=filtteröidä)
+    tuotteet_jolla_id_3 = kaikki_tuotteet.filter(id=3)
+    filtteroidut_tuotteet = kaikki_tuotteet.filter(hinta__lt=30)
+    monimutkainen_kysely = (
+        Tuote.objects
+        .filter(hinta__lt=30)
+        .filter(nimi__contains='u')
+        .exclude(id=3)
+    )
+
+    # QuerySetillä on esim count(),
+    # joka kertoo montako objektia QS sisältää
+    print('QuerySet 1:', kaikki_tuotteet)
+    print(kaikki_tuotteet.count())
+    print('QuerySet 2:', tuotteet_jolla_id_3)
+    print(tuotteet_jolla_id_3.count())
+
+    # Jos QuerySetissä on vain yksi objekti, sen voi
+    # hakea QuerySetistä get-metodilla:
+    tuote = tuotteet_jolla_id_3.get()
+    print('objekti:', tuote)
+    print('hinta:', tuote.hinta)
+
+    # QuerySetin sisältämiä objekteja voi käydä läpi
+    # for-loopilla
+    for tuote in filtteroidut_tuotteet:
+        print(tuote, tuote.hinta)
