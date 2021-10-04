@@ -1,27 +1,10 @@
 <html>
-    <!-- Tältä näyttää kommentti -->
     <head><title>TODO-lista</title></head>
     <body>
         <h1>Tehtävät</h1>
-        moi<br>
-        hei<br>
-        terve<br>
-        <h2>alaotsikko</h2>
-        <h3>alaotsikon alaotsikko</h3>
-
-        Tekstiä voi kirjoittaa sellaisenaan.
-
-        Otetaan muuttuja vastaan contextista:
-        {{ esim }}
-
-        <br>
-        {% for iteemi in listavaikka %}
-        asia: {{iteemi}}<br>
-        {% endfor %}
-
-        <ul><!-- ul = Unnumbered List = Numeroimaton lista -->
+        <ul>
         {% for tehtava in tehtavat %}
-            <li>{{tehtava.otsikko.upper}}</li>
+            <li>{{tehtava}}</li>
         {% endfor %}
         </ul>
     </body>
