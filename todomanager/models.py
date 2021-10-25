@@ -5,4 +5,4 @@ class Tehtava(models.Model):
     kuvaus = models.CharField(max_length=2000, default="", blank=True)
 
     def __str__(self):
-        return "(" + self.otsikko + ")"
+        return self.otsikko
