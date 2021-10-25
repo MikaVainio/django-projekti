@@ -7,3 +7,10 @@ def todo_listaus(request):
         "tehtavat": Tehtava.objects.all(),
     }
     return render(request, 'todos/listaus.html', context)
+
+
+def todo_tehtava(request, tehtava_id):
+    context = {
+        "tehtava": Tehtava.objects.filter(id=tehtava_id).get(),
+    }
+    return render(request, 'todos/tehtava.html', context)

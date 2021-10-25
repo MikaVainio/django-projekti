@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Tehtävä - {{tehtava.otsikko}}</title>
+    </head>
+    <body>
+        <h1>{{tehtava.otsikko}}</h1>
+
+        <p>
+        {%if tehtava.tehty %}
+            <b>TEHTY<b>
+        {%else%}
+            <i>Tekemättä</i>
+        {%endif%}
+        </p>
+
+        <p>
+            {{tehtava.kuvaus}}
+        </p>
+
+        <p>
+            <a href="{% url 'tehtavalistaus' %}">Tehtävälista</a>
+        </p>
+    </body>
+</html>

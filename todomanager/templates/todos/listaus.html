@@ -4,7 +4,9 @@
         <h1>Tehtävät</h1>
         <ul>
         {% for tehtava in tehtavat %}
-            <li>{{tehtava}}</li>
+            <li>
+                <a href="{% url 'yks_tehtava' tehtava.id %}">{{tehtava}}</a>
+            </li>
         {% endfor %}
         </ul>
     </body>
