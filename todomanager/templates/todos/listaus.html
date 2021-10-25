@@ -5,7 +5,15 @@
         <ul>
         {% for tehtava in tehtavat %}
             <li>
+                {% if tehtava.tehty %}
+                <s>
+                {% endif %}
+
                 <a href="{% url 'yks_tehtava' tehtava.id %}">{{tehtava}}</a>
+
+                {% if tehtava.tehty %}
+                </s>
+                {% endif %}
             </li>
         {% endfor %}
         </ul>
