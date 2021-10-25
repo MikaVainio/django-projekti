@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import mimetypes
 from pathlib import Path
+
+# Lisää javascript mimetyyppi *.js-tiedostoille, koska
+# Windows-ympäristössä sitä ei ole oletuksena
+mimetypes.add_type('application/javascript', '.js')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +31,7 @@ SECRET_KEY = 'django-insecure-v9n_5-z=)%2%ceoqo3sif1-3k8ie34q+qwee43$3z@a_!1re4p
 DEBUG = True
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = ['127.0.0.1']
 
 
 # Application definition
@@ -38,9 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todomanager',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
