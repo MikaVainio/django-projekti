@@ -1,24 +1,23 @@
-<html>
-    <head>
-        <title>Tehtävä - {{tehtava.otsikko}}</title>
-    </head>
-    <body>
-        <h1>{{tehtava.otsikko}}</h1>
+{% extends "todos/base.html" %}
 
-        <p>
-        {%if tehtava.tehty %}
-            <b>TEHTY</b>
-        {%else%}
-            <i>Tekemättä</i>
-        {%endif%}
-        </p>
+{% block title %}Tehtävä - {{tehtava.otsikko}}{% endblock %}
 
-        <p>
-            {{tehtava.kuvaus}}
-        </p>
+{% block content %}
+<h1>{{tehtava.otsikko}}</h1>
 
-        <p>
-            <a href="{% url 'tehtavalistaus' %}">Tehtävälista</a>
-        </p>
-    </body>
-</html>
+<p>
+{%if tehtava.tehty %}
+    <b>TEHTY</b>
+{%else%}
+    <i>Tekemättä</i>
+{%endif%}
+</p>
+
+<p>
+    {{tehtava.kuvaus}}
+</p>
+
+<p>
+    <a href="{% url 'tehtavalistaus' %}">Tehtävälista</a>
+</p>
+{% endblock %}

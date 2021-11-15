@@ -1,15 +1,24 @@
-<html>
-    <head><title>TODO-lista</title></head>
-    <body>
-        <h1>Tehtävät</h1>
-        <ul>
+{% extends "todos/base.html" %}
+
+{% block title %}TODO-lista{% endblock %}
+
+{% block heading %}Tehtävät{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <ul class="list-group">
         {% for tehtava in tehtavat %}
-            <li>
+            <li class="list-group-item">
                 {% if tehtava.tehty %}
                 <s>
                 {% endif %}
 
                 <a href="{% url 'yks_tehtava' tehtava.id %}">{{tehtava}}</a>
+
+                {% if tehtava.kategoria %}
+                <span class="badge rounded-pill bg-info text-dark">{{tehtava.kategoria}}</span>
+                {% endif %}
 
                 {% if tehtava.tehty %}
                 </s>
@@ -17,5 +26,6 @@
             </li>
         {% endfor %}
         </ul>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock %}
