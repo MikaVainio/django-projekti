@@ -18,5 +18,8 @@ class Tehtava(models.Model):
         blank=True,
     )
 
+    class Meta:
+        ordering = ('kategoria', 'tehty', 'otsikko')
+
     def __str__(self):
         return self.otsikko
