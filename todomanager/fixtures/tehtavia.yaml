@@ -1,0 +1,13 @@
+- model: todomanager.kategoria
+  pk: 1
+  fields:
+    nimi: Nakkihommat
+- model: todomanager.tehtava
+  pk: 1
+  fields:
+    otsikko: Järjestä paperit
+    kategoria: 1
+- model: todomanager.tehtava
+  pk: 2
+  fields:
+    otsikko: Kirjoita koodi
